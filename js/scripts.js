@@ -1,5 +1,7 @@
 const postsList = document.querySelector('.posts-list');
 
+const postsLikedId = [];
+
 const posts = [
     {
         id: 1,
@@ -66,7 +68,6 @@ posts.forEach(post => {
 // funzione che crea un post
 function createPost({id, autore, data, testo, immagine, likes}) {
     const {nome, foto} = autore;
-    data = formatData(data);
     const post = document.createElement('div');
     post.className = 'post';
     post.append(createPostHeader(nome, foto, data));
@@ -157,6 +158,7 @@ function createLikesCta(postid) {
     link.className = 'like-button js-like-button';
     link.href = '#';
     link.dataset.postid = `${postid}`;
+    link.addEventListener('click', clickHandler);
     link.innerHTML = `<i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>`;
     link.innerHTML += `<span class="like-button__label">Mi Piace</span>`;
     likesCta.append(link);
@@ -171,8 +173,17 @@ function createLikesCounter(postid, likes) {
     return likesCounter;
 }
 
-// funzione che riceve una data nel formato mm-dd-yyyy e la formatta nel formato dd-mm-yyyy
-function formatData(data) {
-    const [mese, giorno, anno] = data.split('-');
-    return `${giorno}-${mese}-${anno}`;
+// funzione che gestisce il click
+function clickHandler() {
+    const postId = parseInt(this.dataset.postid);
+    this.classList.add('like-button--liked');
+    posts.forEach(post => {
+        if ( post.id === postId ) {
+            postsLikedId.push(postId);
+            post.likes++;
+            const bEl = document.querySelector('.js-likes-counter');
+            bEl.innerHTML = post.likes;
+            return
+        }
+    });
 }
