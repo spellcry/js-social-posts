@@ -1,6 +1,6 @@
 const postsList = document.querySelector('.posts-list');
 
-const postsLikedId = [];
+let postsLikedId = [];
 
 const posts = [
     {
@@ -183,11 +183,21 @@ function formatData(data) {
 // funzione che gestisce il click
 function clickHandler() {
     const postId = parseInt(this.dataset.postid);
-    this.classList.add('like-button--liked');
     posts.forEach(post => {
         if ( post.id === postId ) {
-            postsLikedId.push(postId);
-            post.likes++;
+            if( postsLikedId.includes(postId) ){
+                this.classList.remove('like-button--liked');
+                postsLikedId = postsLikedId.filter(id => {
+                    return id !== postId;
+                });
+                console.log(postsLikedId)
+                post.likes--;
+                
+            } else {
+                this.classList.add('like-button--liked');
+                postsLikedId.push(postId);
+                post.likes++;
+            }
             // ottengo l'elemento 'likes' relative al pulsante premuto
             likesEl = this.parentElement.parentElement;
             const bEl = likesEl.querySelector('.js-likes-counter');
