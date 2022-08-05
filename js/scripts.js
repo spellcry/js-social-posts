@@ -156,7 +156,7 @@ function createLikesCta(postid) {
     likesCta.className = 'likes__cta';
     const link = document.createElement('a');
     link.className = 'like-button js-like-button';
-    link.href = '#';
+    // link.href = '#';
     link.dataset.postid = `${postid}`;
     link.addEventListener('click', clickHandler);
     link.innerHTML = `<i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>`;
@@ -181,7 +181,9 @@ function clickHandler() {
         if ( post.id === postId ) {
             postsLikedId.push(postId);
             post.likes++;
-            const bEl = document.querySelector('.js-likes-counter');
+            // ottengo l'elemento 'likes' relative al pulsante premuto
+            likesEl = this.parentElement.parentElement;
+            const bEl = likesEl.querySelector('.js-likes-counter');
             bEl.innerHTML = post.likes;
             return
         }
