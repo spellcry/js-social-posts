@@ -183,7 +183,7 @@ function createLikesCounter(postid, likes) {
 // funzione che riceve una data nel formato mm-dd-yyyy e la formatta nel formato dd-mm-yyyy
 function formatData(data) {
     const [mese, giorno, anno] = data.split('-');
-    return `${giorno}-${mese}-${anno}`;
+    return `${giorno}/${mese}/${anno}`;
 }
 
 // funzione che gestisce il click
