@@ -50,8 +50,7 @@ const posts = [
     {
         id: 5,
         autore: {
-            nome: 'Kobe Bryant',
-            foto: 'https://picsum.photos/id/247/70/70'           
+            nome: 'Kobe Bryant',          
         },
         data: '08-05-2022',
         testo: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque ex vero libero debitis aperiam sed quaerat saepe sequi fugiat doloribus!',
@@ -101,7 +100,14 @@ function createPostMeta(nome, foto, data) {
 function createPostMetaIcon(nome, foto) {
     const metaIcon = document.createElement('div');
     metaIcon.className = 'post-meta__icon';
-    metaIcon.innerHTML = `<img class="profile-pic" src="${foto}" alt="${nome}">`;
+    if ( foto === undefined || foto === "" ) {
+        const [n, cognome] = nome.split(' ');
+        const [inizialeNome] = n.split('');
+        const [inizialeCognome] = cognome.split('');
+        metaIcon.innerHTML = `<div class="profile-initials">${inizialeNome}${inizialeCognome}</div>`;
+    } else {
+        metaIcon.innerHTML = `<img class="profile-pic" src="${foto}" alt="${nome}">`;
+    }
     return metaIcon;
 }
 

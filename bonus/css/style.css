@@ -52,10 +52,15 @@ h1 {
 
 .post-meta {
     display: flex;
+    align-items: center;
 }
 
 .post-meta__icon {
     margin-right: 24px;
+}
+
+.profile-initials {
+    font-size: 3rem;
 }
 
 .post-meta__data {
