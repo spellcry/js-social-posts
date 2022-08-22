@@ -101,9 +101,9 @@ function createPostMetaIcon(nome, foto) {
     const metaIcon = document.createElement('div');
     metaIcon.className = 'post-meta__icon';
     if ( foto === undefined || foto === "" ) {
-        const [n, cognome] = nome.split(' ');
-        const [inizialeNome] = n.split('');
-        const [inizialeCognome] = cognome.split('');
+        const [nomeSplitted, cognomeSplitted] = nome.split(' ');
+        const [inizialeNome] = nomeSplitted.split('');
+        const [inizialeCognome] = cognomeSplitted.split('');
         metaIcon.innerHTML = `<div class="profile-initials">${inizialeNome}${inizialeCognome}</div>`;
     } else {
         metaIcon.innerHTML = `<img class="profile-pic" src="${foto}" alt="${nome}">`;
