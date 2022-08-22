@@ -163,7 +163,7 @@ function createLikesCta(postid) {
     likesCta.className = 'likes__cta';
     const link = document.createElement('a');
     link.className = 'like-button js-like-button';
-    // link.href = '#';
+    link.href = '#';
     link.dataset.postid = `${postid}`;
     link.addEventListener('click', clickHandler);
     link.innerHTML = `<i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>`;
@@ -187,7 +187,11 @@ function formatData(data) {
 }
 
 // funzione che gestisce il click
-function clickHandler() {
+function clickHandler(event) {
+    // questo metodo di event impedisce che al click parta il comportamento di default
+    // cioè tornare all'inizio della pagina
+    event.preventDefault();
+    
     const postId = parseInt(this.dataset.postid);
     posts.forEach(post => {
         if ( post.id === postId ) {
