@@ -205,8 +205,9 @@ function clickHandler() {
                 post.likes++;
             }
             // ottengo l'elemento 'likes' relative al pulsante premuto
-            likesEl = this.parentElement.parentElement;
-            const bEl = likesEl.querySelector('.js-likes-counter');
+            // likesEl = this.parentElement.parentElement;
+            // const bEl = likesEl.querySelector('.js-likes-counter');
+            const bEl = document.getElementById(`like-counter-${postId}`);
             bEl.innerHTML = post.likes;
             return
         }
