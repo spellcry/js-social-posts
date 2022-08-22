@@ -193,9 +193,15 @@ function clickHandler() {
         if ( post.id === postId ) {
             if( postsLikedId.includes(postId) ){
                 this.classList.remove('like-button--liked');
-                postsLikedId = postsLikedId.filter(id => {
-                    return id !== postId;
-                });
+                
+                // metodo non corretto per eliminare un elemento di un array
+                // postsLikedId = postsLikedId.filter(id => {
+                //     return id !== postId;
+                // });
+
+                // metodo corretto per eliminare un elemento di un array
+                postsLikedId.splice(postsLikedId.indexOf(postId), 1);
+                
                 console.log(postsLikedId)
                 post.likes--;
                 
