@@ -193,6 +193,12 @@ function clickHandler(event) {
     event.preventDefault();
     
     const postId = parseInt(this.dataset.postid);
+
+    // al posto del forEach e del primo if potevo fare come segue
+    // let post = posts.find(el => {
+    //     el.id === postId;
+    // });
+
     posts.forEach(post => {
         if ( post.id === postId ) {
             if( postsLikedId.includes(postId) ){
