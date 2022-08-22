@@ -201,8 +201,7 @@ function clickHandler() {
 
                 // metodo corretto per eliminare un elemento di un array
                 postsLikedId.splice(postsLikedId.indexOf(postId), 1);
-                
-                console.log(postsLikedId)
+
                 post.likes--;
                 
             } else {
